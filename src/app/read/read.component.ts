@@ -20,9 +20,6 @@ export class ReadComponent implements OnInit {
   ngOnInit() {
     this.store.dispatch(new TutorialActions.LoadTutorials());
     this.tutorials$ = this.store.select('tutorial');
-    this.store.select('tutorial').subscribe(res => {
-      res.push({name: 'asdasd', url: '1'});
-    });
   }
 
   delTutorial(index: number) {
