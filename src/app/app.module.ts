@@ -2,13 +2,25 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import {tutorialReducer} from './reducers/tutorial.reducer';
+import { ReadComponent } from './read/read.component';
+import { CreateComponent } from './create/create.component';
+import { EffectsModule } from '@ngrx/effects';
+import {TutorialEffect} from './effects/tutorial.effect';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ReadComponent,
+    CreateComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    StoreModule.forRoot({
+        tutorial: tutorialReducer
+    }, {}),
+    EffectsModule.forRoot([TutorialEffect])
   ],
   providers: [],
   bootstrap: [AppComponent]
